@@ -1,4 +1,4 @@
-
+// button addEventListener
 
 document.getElementById("btn-login")
 .addEventListener('click',function (event){
@@ -12,11 +12,32 @@ document.getElementById("btn-login")
         document.getElementById("nav-container").classList.remove("hidden");
         document.getElementById("hero-section").classList.add("hidden");
         document.getElementById("footer-container").classList.remove("hidden");
+        document.getElementById("card-container-id").classList.remove("hidden");
+        document.getElementById("learn-section").classList.remove("hidden");
     }
     else{
         alert("The Account name or the Passord is wrong");
     }
 })
+
+function removeActiveClass(){
+    const activeBtn = document.getElementsByClassName("active");
+    for(let btn of activeBtn){
+        btn.classList.remove("active");
+    }
+}
+
+
+
+
+// const img = document.getElementsByClassName("my-img");
+
+// img.addEventListener("mouseover", ()=>{
+//     img.src = "https://img.icons8.com/?size=100&id=yZ5EVwBq6KA6&format=png&color=FFFFFF"
+// });
+// img.addEventListener("mouseout", () => {
+//     img.src = "https://img.icons8.com/?size=100&id=9480&format=png&color=422AD5"
+// });
 
 // load buttons
 
@@ -70,10 +91,17 @@ function loadButtons(){
     .then(data => displayButtons(data.data));
 }
 
-function loadWords(id){
-    fetch(`https://openapi.programming-hero.com/api/level/${id}`)
+function loadWords(level_no, btn_id){
+    fetch(`https://openapi.programming-hero.com/api/level/${level_no}`)
     .then(res => res.json())
-    .then(data=> displayWords(data.data));
+    .then(data=> {
+        removeActiveClass();
+        const btnClicked = document.getElementById(`btn-${btn_id}`);
+        btnClicked.classList.add("active");
+        const iconCicked = 
+        // console.log(btnClicked);
+        displayWords(data.data)
+    });
 }
 
 // {
@@ -446,13 +474,18 @@ function loadWords(id){
 function displayButtons(buttons){
     const btnContainer = document.getElementById("btn-container");
     for(let button of buttons){
-        // console.log(button);
+        // console.log("level_no",button.level_no);
+        // console.log("buttonid",button.id);
         
 
         const divBtn = document.createElement("div");
 
         divBtn.innerHTML = `
-        <button onclick="loadWords(${button.level_no})" class="btn btn-outline btn-primary"><img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=9480&format=png&color=422AD5" alt="">Lesson - ${button.level_no}</button>
+        <button id= "btn-${button.id}" onclick="loadWords(${button.level_no}, ${button.id})" class="btn btn-outline btn-primary btn-hover border-[#422AD5]"><svg id="icon-${button.id}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="size-6  icon ">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+        </svg><span class = "btn-text">Lesson - ${button.level_no}</span></button>
         `;
         
         btnContainer.appendChild(divBtn);
@@ -460,6 +493,11 @@ function displayButtons(buttons){
 
     }
 }
+
+
+
+
+
 
 function displayWords(arrayOfObj){
     const cardContainer = document.getElementById("card-container");

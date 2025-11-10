@@ -53,6 +53,41 @@
         .inter {
             font-family: "Inter", sans-serif;
         }
+
+        .active {
+            background-color: #422AD5;
+            color: white;
+        }
+
+        .btn-hover {
+            background-color: #FFFFFF;
+            color: #422AD5;
+            border: 2px solid #422AD5;
+        }
+
+        .btn-hover .icon {
+            fill: #422AD5;
+        }
+
+        .btn-hover:hover {
+            color: #FFFFFF;
+            background-color: #422AD5;
+        }
+
+        .btn-hover:hover .icon {
+            fill: #FFFFFF;
+        }
+
+        .btn-hover:hover,
+        .btn-hover.active {
+            background-color: #422AD5;
+            color: white;
+        }
+
+        .btn-hover:hover .icon,
+        .btn-hover.active .icon {
+            fill: #FFFFFF;
+        }
     </style>
 </head>
 
@@ -60,7 +95,7 @@
 
     <header>
         <section id="nav-container" class="hidden">
-            <nav class="flex justify-between items-center p-3 border-b-2 border-[#C6BDBD] bg-blur-2xl">
+            <nav class="flex justify-between items-center p-3 border-b-2 border-[#C6BDBD]  sticky top-0 z-50">
                 <div class="flex items-center ml-20">
                     <h2 class="font-bold text-xl">English</h2>
                     <img src="assets/logo.png" alt="">
@@ -91,11 +126,12 @@
                 <form action="">
 
                     <label class="input mb-5">
-                        <input id="input1" type="search" required placeholder="Enter your name (Elon)" />
+                        <input id="input1" value="Elon" type="search" required placeholder="Enter your name (Elon)" />
                     </label>
                     <br>
                     <label class="input">
-                        <input id="input2" type="password" required placeholder="Enter Password (123456)" />
+                        <input id="input2" value="123456" type="password" required
+                            placeholder="Enter Password (123456)" />
                     </label>
                     <br>
                     <button id="btn-login" type="submit" class="btn mt-5 bg-[#3D26C7] text-white">Get Started</button>
@@ -110,30 +146,33 @@
 
         <!-- Let's learn section -->
 
-        <section class="mx-32">
+        <section id="learn-section" class="mx-32 hidden mt-14">
             <h1 class="text-4xl font-bold text-center mb-9"><span class="text-blue-400">Let's </span>Learn Vocabularies
             </h1>
-            <div id="btn-container" class="flex justify-center items-center gap-5">
+            <div id="btn-container" class="flex justify-center items-center gap-5 mt-5">
 
             </div>
         </section>
 
         <!-- card -->
-        <div id="card-container" class="grid grid-cols-3 mx-32 gap-8">
+        <section id="card-container-id" class="hidden mt-10 mb-10">
+            <div id="card-container" class="grid grid-cols-3 mx-32 gap-8">
 
-            <div class=" col-span-full flex flex-col justify-center items-center mt-10">
-                <div>
-                    <img src="assets/alert-error.png" alt="">
+                <div class=" col-span-full flex flex-col justify-center items-center mt-10">
+                    <div>
+                        <img src="assets/alert-error.png" alt="">
+                    </div>
+                    <div class="text-center">
+                        <p class="text-2xl text-[#79716b] mb-4">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                        <h2 class="text-4xl">নেক্সট Lesson এ যান</h2>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <p class="text-2xl text-[#79716b] mb-4">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-                    <h2 class="text-4xl">নেক্সট Lesson এ যান</h2>
-                </div>
+
+
+
             </div>
+        </section>
 
-
-
-        </div>
         <!-- <div class="card bg-base-100 shadow-lg mb-16">
             <div class="card-body items-center">
                 <h2 class="card-title font-bold text-3xl inter">Medium Card</h2>
@@ -152,20 +191,38 @@
             </div>
         </div> -->
 
-        <!-- Empty elements -->
-        <!-- <div class="mx-32 flex flex-col justify-center items-center mt-10">
-            <div>
-                <img src="assets/alert-error.png" alt="">
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <h3 class="text-lg font-bold">Hello!</h3>
+                <p class="py-4">Press ESC key or click the button below to close</p>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
             </div>
-            <div class="text-center">
-                <p class="text-2xl text-[#79716b] mb-4">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-                <h2 class="text-4xl">নেক্সট Lesson এ যান</h2>
-            </div>
-        </div> -->
+        </dialog>
+
+        <!-- Bttttnnnn -->
+        <!-- <button class="btn btn-hover">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#422AD5"
+                viewBox="0 0 24 24">
+                <path d="M12 0L15.09 8H24L17.45 12.97L20.55 21L12 16.03L3.45 21L6.55 12.97L0 8H8.91L12 0Z" />
+            </svg>
+            <span class="btn-text">Click Me</span>
+        </button> -->
+
+
+
+
+
 
     </main>
 
-    <footer id="footer-container" class="hidden">
+    <footer id="footer-container" class="hidden mt-24 mb-10">
 
         <div class="flex justify-between mt-12">
             <div class="flex flex-col">
@@ -192,6 +249,19 @@
     </footer>
 
     <script src="scripts/index.js"></script>
+
+    <!-- <script>
+        const imgs = document.getElementsByClassName("my-img");
+
+            for(let img of imgs){
+                img.addEventListener("mouseover", () => {
+                    img.src = "assets/fb-thumb.png"
+                });
+                img.addEventListener("mouseout", () => {
+                    img.src = "https://img.icons8.com/?size=100&id=9480&format=png&color=422AD5"
+                });
+            }
+    </script> -->
 
 </body>
 
