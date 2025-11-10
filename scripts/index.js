@@ -1,3 +1,5 @@
+
+
 document.getElementById("btn-login")
 .addEventListener('click',function (event){
     event.preventDefault();
@@ -464,10 +466,29 @@ function displayWords(arrayOfObj){
 
     cardContainer.innerHTML = "";
 
+    if(arrayOfObj.length === 0){
+        
+
+        cardContainer.innerHTML = `
+        <div class="mx-32 flex flex-col justify-center items-center mt-10 col-span-full">
+            <div>
+                <img src="assets/alert-error.png" alt="">
+            </div>
+            <div class="text-center">
+                <p class="text-2xl text-[#79716b] mb-4">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                <h2 class="text-4xl">নেক্সট Lesson এ যান</h2>
+            </div>
+        </div>
+        `;
+        return;
+    }
+
     for(let lvl of arrayOfObj){
         // console.log(lvl.word);
 
         const divCard = document.createElement("div");
+
+        // if(arrayOfObj)
 
         divCard.innerHTML = `
         
@@ -497,6 +518,6 @@ function displayWords(arrayOfObj){
 
 
 loadButtons();
-loadWords();
+// loadWords();
 
 
