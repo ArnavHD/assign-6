@@ -24,6 +24,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
 
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
     <!-- CDN daisy ui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -35,12 +42,16 @@
             font-family: "Hind Siliguri", sans-serif;
         }
 
-        .poppins{
+        .poppins {
             font-family: "Poppins", sans-serif;
         }
 
         .tiro-bangla {
             font-family: "Tiro Bangla", serif;
+        }
+
+        .inter {
+            font-family: "Inter", sans-serif;
         }
     </style>
 </head>
@@ -56,9 +67,14 @@
                     <h2 class="font-bold text-xl">জানালা</h2>
                 </div>
                 <div class="mr-20">
-                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=59807&format=png&color=422AD5" alt=""> FAQ</button>
-                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=9480&format=png&color=422AD5" alt=""> Learn</button>
-                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=vGj0AluRnTSa&format=png&color=422AD5" alt="">Logout</button>
+                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5"
+                            src="https://img.icons8.com/?size=100&id=59807&format=png&color=422AD5" alt=""> FAQ</button>
+                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5"
+                            src="https://img.icons8.com/?size=100&id=9480&format=png&color=422AD5" alt="">
+                        Learn</button>
+                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5"
+                            src="https://img.icons8.com/?size=100&id=vGj0AluRnTSa&format=png&color=422AD5"
+                            alt="">Logout</button>
                 </div>
             </nav>
         </section>
@@ -69,8 +85,9 @@
         <section id="hero-section" class="flex justify-center items-center mx-20 mt-20">
             <div>
                 <h2 class="text-5xl font-bold mb-4"><span class="text-blue-400">English</span> is Easy</h2>
-                <p class="mb-5 text-2xl w-4/5">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons
-                আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+                <p class="mb-5 text-2xl w-4/5">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার
+                    দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons
+                    আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
                 <form action="">
 
                     <label class="input mb-5">
@@ -81,10 +98,10 @@
                         <input id="input2" type="password" required placeholder="Enter Password (123456)" />
                     </label>
                     <br>
-                    <button id="btn-login" type="submit" class="btn mt-5 bg-[#3D26C7] text-white" >Get Started</button>
+                    <button id="btn-login" type="submit" class="btn mt-5 bg-[#3D26C7] text-white">Get Started</button>
 
                 </form>
-                
+
             </div>
             <div>
                 <img src="assets/hero-student.png" alt="">
@@ -92,10 +109,39 @@
         </section>
 
         <!-- Let's learn section -->
-         
-        <section>
 
+        <section class="ml-20">
+            <h1 class="text-4xl font-bold text-center mb-9"><span class="text-blue-400">Let's </span>Learn Vocabularies
+            </h1>
+            <div id="btn-container" class="flex justify-center items-center gap-5">
+
+            </div>
         </section>
+
+        <!-- card -->
+        <div id="card-container" class="grid grid-cols-3 mx-32 gap-8"></div>
+        <!-- <div class="card bg-base-100 shadow-lg mb-16">
+            <div class="card-body items-center">
+                <h2 class="card-title font-bold text-3xl inter">Medium Card</h2>
+                <p class="font-bold text-sm inter">Meaning/Pronouciation</p>
+                <h2 class="font-bold text-3xl">আমি বাংগলি</h2>
+                <div class="flex justify-between w-full">
+                    <button class="btn">
+                        <img class="w-5 h-5"
+                            src="https://img.icons8.com/?size=100&id=yZ5EVwBq6KA6&format=png&color=000000" alt="">
+                    </button>
+                    <button class="btn">
+                        <img class="w-5 h-5"
+                            src="https://img.icons8.com/?size=100&id=1lJKdzgvi4pT&format=png&color=000000" alt="">
+                    </button>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Empty elements -->
+        <div>
+            
+        </div>
 
     </main>
 
