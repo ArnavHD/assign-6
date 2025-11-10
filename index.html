@@ -1,11 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Window</title>
+
+    <!-- Fonts implementation -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tiro Bangla -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- CDN daisy ui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+
+    <style>
+        .hind-siliguri {
+            font-family: "Hind Siliguri", sans-serif;
+        }
+
+        .poppins{
+            font-family: "Poppins", sans-serif;
+        }
+
+        .tiro-bangla {
+            font-family: "Tiro Bangla", serif;
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="hind-siliguri">
+
+    <header>
+        <section id="nav-container" class="hidden">
+            <nav class="flex justify-between items-center p-3 border-b-2 border-[#C6BDBD] bg-blur-2xl">
+                <div class="flex items-center ml-20">
+                    <h2 class="font-bold text-xl">English</h2>
+                    <img src="assets/logo.png" alt="">
+                    <h2 class="font-bold text-xl">জানালা</h2>
+                </div>
+                <div class="mr-20">
+                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=59807&format=png&color=422AD5" alt=""> FAQ</button>
+                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=9480&format=png&color=422AD5" alt=""> Learn</button>
+                    <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=vGj0AluRnTSa&format=png&color=422AD5" alt="">Logout</button>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+    <main>
+        <!-- hero section -->
+        <section id="hero-section" class="flex justify-center items-center mx-20 mt-20">
+            <div>
+                <h2 class="text-5xl font-bold mb-4"><span class="text-blue-400">English</span> is Easy</h2>
+                <p class="mb-5 text-2xl w-4/5">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons
+                আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+                <form action="">
+
+                    <label class="input mb-5">
+                        <input id="input1" type="search" required placeholder="Enter your name (Elon)" />
+                    </label>
+                    <br>
+                    <label class="input">
+                        <input id="input2" type="password" required placeholder="Enter Password (123456)" />
+                    </label>
+                    <br>
+                    <button id="btn-login" type="submit" class="btn mt-5 bg-[#3D26C7] text-white" >Get Started</button>
+
+                </form>
+                
+            </div>
+            <div>
+                <img src="assets/hero-student.png" alt="">
+            </div>
+        </section>
+
+        <!-- Let's learn section -->
+         
+        <section>
+
+        </section>
+
+    </main>
+
+    <footer id="footer-container" class="hidden">
+
+        <div class="flex justify-between mt-12">
+            <div class="flex flex-col">
+                <div class="flex items-center ml-20">
+                    <h2 class="font-bold text-xl">English</h2>
+                    <img src="assets/logo.png" alt="">
+                    <h2 class="font-bold text-xl">জানালা</h2>
+                </div>
+                <div class="ml-20">
+                    <h2 class="text-sm font-bold">ইংরেজি শিখুন সহজে</h2>
+                    <p>Providing ED-Tech Applications since 2025</p>
+                </div>
+            </div>
+            <div class="mr-20">
+                <p>FOLLOW US</p>
+                <div class="flex gap-2">
+                    <img class="w-5 h-5" src="assets/fb-thumb.png" alt="">
+                    <img class="w-5 h-5" src="assets/youtube-thumb.png" alt="">
+                    <img class="w-5 h-5" src="assets/instagram-thumb.png" alt="">
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="scripts/index.js"></script>
+
 </body>
+
 </html>
