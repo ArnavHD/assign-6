@@ -92,7 +92,6 @@ document.getElementById("logout-btn")
         });
 
         
-        
     })
 
 function removeActiveClass() {
