@@ -11,7 +11,7 @@ document.getElementById("btn-login")
         if(input_2 === "" && input_1 === ""){
             alert("Please tell us your name first");
         } 
-        else if (convertedInput2 === 123456 && input_1 === "Elon") {
+        else if (convertedInput2 === 123456 && input_1 !== "") {
             document.getElementById("nav-container").classList.remove("hidden");
             document.getElementById("hero-section").classList.add("hidden");
             document.getElementById("footer-container").classList.remove("hidden");
@@ -30,6 +30,11 @@ document.getElementById("btn-login")
             alert("The Account name or the Passord is wrong");
         }
     })
+
+document.getElementById("logout-btn")
+.addEventListener('click', ()=>{
+    console.log("Log out button clicked.");
+})
 
 function removeActiveClass() {
     const activeBtn = document.getElementsByClassName("active");
