@@ -1,5 +1,7 @@
 // button addEventListener
 
+document.getElementById("input1").focus();
+
 document.getElementById("btn-login")
     .addEventListener('click', function (event) {
         event.preventDefault();
@@ -10,6 +12,7 @@ document.getElementById("btn-login")
 
         if(input_2.value === "" && input_1.value === ""){
             alert("Please tell us your name first");
+            input_1.focus();
         } 
         else if (convertedInput2 === 123456 && input_1.value !== "") {
             document.getElementById("nav-container").classList.remove("hidden");
@@ -29,8 +32,18 @@ document.getElementById("btn-login")
             input_1.value = "";
             input_2.value = "";
             alert("The Account name or the Passord is wrong");
+            input_1.focus();
         }
     })
+
+const showLoader =() =>{
+    const loader = document.getElementById("loader").classList.remove("hidden");
+    document.getElementById("card-container-id").classList.add("hidden");
+}
+const hideLoader =() =>{
+    const loader = document.getElementById("loader").classList.add("hidden");
+    document.getElementById("card-container-id").classList.remove("hidden");
+}
 
 document.getElementById("learn-btn")
 .addEventListener('click', ()=>{
@@ -63,7 +76,7 @@ document.getElementById("logout-btn")
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: "Logged Out",
+                    title: "Logged Out Successfully",
                     text: "You are Logged out",
                     icon: "success"
                 });
@@ -79,12 +92,7 @@ document.getElementById("logout-btn")
         });
 
         
-        // document.getElementById("nav-container").classList.add("hidden");
-        // document.getElementById("hero-section").classList.remove("hidden");
         
-        // document.getElementById("card-container-id").classList.add("hidden");
-        // document.getElementById("learn-section").classList.add("hidden");
-        // document.getElementById("faq-section").classList.add("hidden");
     })
 
 function removeActiveClass() {
@@ -188,6 +196,7 @@ function loadButtons() {
 }
 
 function loadWords(level_no, btn_id) {
+    showLoader();
     fetch(`https://openapi.programming-hero.com/api/level/${level_no}`)
         .then(res => res.json())
         .then(data => {
@@ -623,6 +632,7 @@ function displayWords(arrayOfObj) {
             </div>
         </div>
         `;
+        hideLoader();
         return;
     }
 
@@ -655,6 +665,7 @@ function displayWords(arrayOfObj) {
         `;
         cardContainer.appendChild(divCard);
     }
+    hideLoader();
 
 }
 
