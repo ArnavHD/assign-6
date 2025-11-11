@@ -3,18 +3,17 @@
 document.getElementById("btn-login")
     .addEventListener('click', function (event) {
         event.preventDefault();
-        const input_1 = document.getElementById("input1").value;
-        const input_2 = document.getElementById("input2").value;
-        const convertedInput2 = parseInt(input_2);
+        const input_1 = document.getElementById("input1");
+        const input_2 = document.getElementById("input2");
+        const convertedInput2 = parseInt(input_2.value);
         console.log(convertedInput2);
 
-        if(input_2 === "" && input_1 === ""){
+        if(input_2.value === "" && input_1.value === ""){
             alert("Please tell us your name first");
         } 
-        else if (convertedInput2 === 123456 && input_1 !== "") {
+        else if (convertedInput2 === 123456 && input_1.value !== "") {
             document.getElementById("nav-container").classList.remove("hidden");
             document.getElementById("hero-section").classList.add("hidden");
-            document.getElementById("footer-container").classList.remove("hidden");
             document.getElementById("card-container-id").classList.remove("hidden");
             document.getElementById("learn-section").classList.remove("hidden");
             document.getElementById("faq-section").classList.remove("hidden");
@@ -27,14 +26,66 @@ document.getElementById("btn-login")
             });
         }
         else {
+            input_1.value = "";
+            input_2.value = "";
             alert("The Account name or the Passord is wrong");
         }
     })
 
-document.getElementById("logout-btn")
+document.getElementById("learn-btn")
 .addEventListener('click', ()=>{
-    console.log("Log out button clicked.");
+    const scrolLearn = document.getElementById("learn-section");
+    scrolLearn.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+    });
 })
+
+document.getElementById("faq-btn")
+    .addEventListener('click', () => {
+        const scrolLearn = document.getElementById("faq-section");
+        scrolLearn.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+        });
+    })
+document.getElementById("logout-btn")
+    .addEventListener('click', () => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will be logged out from your device",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log Out"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Logged Out",
+                    text: "You are Logged out",
+                    icon: "success"
+                });
+                document.getElementById("nav-container").classList.add("hidden");
+                document.getElementById("hero-section").classList.remove("hidden");
+                document.getElementById("card-container-id").classList.add("hidden");
+                document.getElementById("learn-section").classList.add("hidden");
+                document.getElementById("faq-section").classList.add("hidden");
+
+                document.getElementById("input1").value = "";
+                document.getElementById("input2").value = "";
+            }
+        });
+
+        
+        // document.getElementById("nav-container").classList.add("hidden");
+        // document.getElementById("hero-section").classList.remove("hidden");
+        
+        // document.getElementById("card-container-id").classList.add("hidden");
+        // document.getElementById("learn-section").classList.add("hidden");
+        // document.getElementById("faq-section").classList.add("hidden");
+    })
 
 function removeActiveClass() {
     const activeBtn = document.getElementsByClassName("active");
