@@ -35,6 +35,10 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
 
     <style>
@@ -93,13 +97,13 @@
 
 <body class="hind-siliguri">
 
-    <header>
-        <section id="nav-container" class="hidden">
+    <header class="sticky top-0 z-50 bg-white">
+        <section id="nav-container" class="hidden ">
             <nav class="flex justify-between items-center p-3 border-b-2 border-[#C6BDBD]  sticky top-0 z-50">
                 <div class="flex items-center ml-20">
                     <h2 class="font-bold text-xl">English</h2>
                     <img src="assets/logo.png" alt="">
-                    <h2 class="font-bold text-xl">জানালা</h2>
+                    <h2 class="font-bold text-xl tiro-bangla">জানালা</h2>
                 </div>
                 <div class="mr-20">
                     <button class="btn btn-outline border-[#422AD5] text-[#422AD5]"><img class="w-5 h-5"
@@ -155,7 +159,7 @@
         </section>
 
         <!-- card -->
-        <section id="card-container-id" class="hidden mt-10 mb-10">
+        <section id="card-container-id" class="hidden mt-10 mb-52">
             <div id="card-container" class="grid grid-cols-3 mx-32 gap-8">
 
                 <div class=" col-span-full flex flex-col justify-center items-center mt-10">
@@ -209,7 +213,7 @@
         
         <!-- Open the modal using ID.showModal() method -->
         <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
-        <dialog id="login_popup" class="modal modal-bottom sm:modal-middle">
+        <!-- <dialog id="login_popup" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
                 <img class="w-32 h-32 mx-auto" src="assets/verified.gif" alt="">
                 <h2 class="text-2xl font-bold text-center">Congratulations!!!</h2>
@@ -217,12 +221,51 @@
                 
                 <div class="modal-action flex flex-col justify-center items-center">
                     <form method="dialog">
-                        <!-- if there is a button in form, it will close the modal -->
+                        
                         <button class="btn bg-[#422AD5] text-white">OK</button>
                     </form>
                 </div>
             </div>
-        </dialog>
+        </dialog> -->
+
+        <section id="faq-section" class="mx-32 hidden">
+            <h1 class="text-4xl font-bold text-center mb-20"><span class="text-blue-400">Frequently</span> Asked Question</h1>
+
+            <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" checked="checked" />
+                <div class="collapse-title font-semibold">The difference between var, let, and const</div>
+                <div class="collapse-content text-sm">In JavaScript, var is the old way to declare variables — it’s tied to functions, can be redeclared and reassigned, and
+                gets hoisted to the top of its scope. let is newer, works only within the block it’s in, can change its value but can’t
+                be redeclared in the same block. const is for constants — it can’t be reassigned or redeclared, though if it’s an object
+                or array, we can still change what’s inside it. A good rule is to use const by default, let when you need to change
+                values, and skip var unless you really need it.</div>
+            </div>
+            <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">The difference between map(), forEach(), and filter()</div>
+                <div class="collapse-content text-sm">In JavaScript, forEach() loops through an array to perform actions but returns nothing, map() transforms each element
+                and returns a new array, and filter() selects elements that meet a condition and returns a new array.</div>
+            </div>
+            <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">Explain arrow functions and how they are different from regular functions</div>
+                <div class="collapse-content text-sm">Arrow functions are a shorter way to write functions using =>. They inherit this from the surrounding code, can’t be
+                used with new, and don’t have their own arguments. They’re perfect for concise, modern JavaScript.</div>
+            </div>
+            <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">How JavaScript Promises work</div>
+                <div class="collapse-content text-sm">JavaScript Promises handle asynchronous operations by representing a value that may be available now, later, or never.
+                Use .then() for success and .catch() for errors</div>
+            </div>
+            <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">How closures work in JavaScript</div>
+                <div class="collapse-content text-sm">a closure happens when a function keeps access to variables from the place where it was created, even after that outer
+                function is done running. It’s like the function carries its surrounding environment with it, letting you use or
+                remember values later.</div>
+            </div>
+        </section>
 
 
 
@@ -232,24 +275,30 @@
 
     <footer id="footer-container" class=" mt-16 mb-10">
 
-        <div class="flex justify-between mt-12">
-            <div class="flex flex-col">
+        <div class="flex justify-between mt-12 ">
+            <div class="flex flex-col space-y-3">
                 <div class="flex items-center ml-20">
                     <h2 class="font-bold text-xl">English</h2>
                     <img src="assets/logo.png" alt="">
-                    <h2 class="font-bold text-xl">জানালা</h2>
+                    <h2 class="font-bold text-xl tiro-bangla">জানালা</h2>
                 </div>
-                <div class="ml-20">
+                <div class="ml-20 space-y-3">
                     <h2 class="text-sm font-bold">ইংরেজি শিখুন সহজে</h2>
                     <p>Providing ED-Tech Applications since 2025</p>
                 </div>
             </div>
-            <div class="mr-20">
+            <div class="mr-20 space-y-3">
                 <p>FOLLOW US</p>
                 <div class="flex gap-2">
-                    <img class="w-5 h-5" src="assets/fb-thumb.png" alt="">
-                    <img class="w-5 h-5" src="assets/youtube-thumb.png" alt="">
-                    <img class="w-5 h-5" src="assets/instagram-thumb.png" alt="">
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        <img class="w-5 h-5" src="assets/fb-thumb.png" alt="">
+                    </a>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        <img class="w-5 h-5" src="assets/youtube-thumb.png" alt="">
+                    </a>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        <img class="w-5 h-5" src="assets/instagram-thumb.png" alt="">
+                    </a>
                 </div>
             </div>
         </div>

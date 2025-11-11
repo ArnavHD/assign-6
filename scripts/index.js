@@ -17,7 +17,14 @@ document.getElementById("btn-login")
             document.getElementById("footer-container").classList.remove("hidden");
             document.getElementById("card-container-id").classList.remove("hidden");
             document.getElementById("learn-section").classList.remove("hidden");
-            document.getElementById("login_popup").showModal();
+            document.getElementById("faq-section").classList.remove("hidden");
+            // document.getElementById("login_popup").showModal();
+            Swal.fire({
+                icon: "success",
+                title: "Congratulations!!!",
+                text: "Let's Learn Something New Today",
+                // footer: '<a href="#">Why do I have this issue?</a>'
+            });
         }
         else {
             alert("The Account name or the Passord is wrong");
@@ -29,6 +36,35 @@ function removeActiveClass() {
     for (let btn of activeBtn) {
         btn.classList.remove("active");
     }
+}
+
+// function pronounceWord(word) {
+//     const utterance = new SpeechSynthesisUtterance(word);
+//     utterance.lang = 'en-EN'; // English
+//     window.speechSynthesis.speak(utterance);
+// }
+function pronounceWord(word) {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US'; // Use US English for better voices
+
+    // Get all available voices
+    const voices = window.speechSynthesis.getVoices();
+
+    // Try to select a feminine/soothing voice
+    // Prioritize common names for female voices
+    const femaleVoice = voices.find(voice =>
+        voice.name.toLowerCase().includes('female') ||
+        voice.name.toLowerCase().includes('samantha') ||
+        voice.name.toLowerCase().includes('zira') ||   // Windows
+        voice.name.toLowerCase().includes('google us english')
+    );
+
+    // If a feminine voice is found, assign it
+    if (femaleVoice) {
+        utterance.voice = femaleVoice;
+    }
+
+    window.speechSynthesis.speak(utterance);
 }
 
 
@@ -544,7 +580,7 @@ function displayWords(arrayOfObj) {
         divCard.innerHTML = `
         
         <div class="card bg-base-100 h-60 shadow-lg mb-16">
-            <div class="card-body items-center">
+            <div class="card-body items-center ">
                 <h2 class="card-title font-bold text-3xl inter">${lvl.word}</h2>
                 <p class="font-bold text-sm inter">Meaning / Pronouciation</p>
                 <h2 class="font-bold text-3xl text-center">${lvl.meaning === null ? "অর্থ নেই" : lvl.meaning} / ${lvl.pronunciation}</h2>
@@ -553,7 +589,7 @@ function displayWords(arrayOfObj) {
                         <img class="w-5 h-5"
                             src="https://img.icons8.com/?size=100&id=yZ5EVwBq6KA6&format=png&color=000000" alt="">
                     </button>
-                    <button class="btn">
+                    <button class="btn" onclick="pronounceWord('${lvl.word}')">
                         <img class="w-5 h-5"
                             src="https://img.icons8.com/?size=100&id=1lJKdzgvi4pT&format=png&color=000000" alt="">
                     </button>
