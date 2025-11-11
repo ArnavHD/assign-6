@@ -193,28 +193,36 @@
 
         <!-- Open the modal using ID.showModal() method -->
         <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
-        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <dialog id="word_details" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
-                <h3 class="text-lg font-bold">Hello!</h3>
-                <p class="py-4">Press ESC key or click the button below to close</p>
-                <div class="modal-action">
+                <div id="word-details-container"></div>
+                
+                <div class="modal-action justify-start">
                     <form method="dialog">
                         <!-- if there is a button in form, it will close the modal -->
-                        <button class="btn">Close</button>
+                        <button class="btn text-white bg-[#422AD5]">Close</button>
                     </form>
                 </div>
             </div>
         </dialog>
 
-        <!-- Bttttnnnn -->
-        <!-- <button class="btn btn-hover">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#422AD5"
-                viewBox="0 0 24 24">
-                <path d="M12 0L15.09 8H24L17.45 12.97L20.55 21L12 16.03L3.45 21L6.55 12.97L0 8H8.91L12 0Z" />
-            </svg>
-            <span class="btn-text">Click Me</span>
-        </button> -->
-
+        
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+        <dialog id="login_popup" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <img class="w-32 h-32 mx-auto" src="assets/verified.gif" alt="">
+                <h2 class="text-2xl font-bold text-center">Congratulations!!!</h2>
+                <p class="text-xl text-center">Let's Explore Something New</p>
+                
+                <div class="modal-action flex flex-col justify-center items-center">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn bg-[#422AD5] text-white">OK</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
 
 
 
@@ -222,7 +230,7 @@
 
     </main>
 
-    <footer id="footer-container" class="hidden mt-24 mb-10">
+    <footer id="footer-container" class=" mt-16 mb-10">
 
         <div class="flex justify-between mt-12">
             <div class="flex flex-col">

@@ -1,28 +1,32 @@
 // button addEventListener
 
 document.getElementById("btn-login")
-.addEventListener('click',function (event){
-    event.preventDefault();
-    const input_1 = document.getElementById("input1").value;
-    const input_2 = document.getElementById("input2").value;
-    const convertedInput2 = parseInt(input_2);
-    console.log(convertedInput2);
-    
-    if(convertedInput2 === 123456 && input_1 === "Elon"){
-        document.getElementById("nav-container").classList.remove("hidden");
-        document.getElementById("hero-section").classList.add("hidden");
-        document.getElementById("footer-container").classList.remove("hidden");
-        document.getElementById("card-container-id").classList.remove("hidden");
-        document.getElementById("learn-section").classList.remove("hidden");
-    }
-    else{
-        alert("The Account name or the Passord is wrong");
-    }
-})
+    .addEventListener('click', function (event) {
+        event.preventDefault();
+        const input_1 = document.getElementById("input1").value;
+        const input_2 = document.getElementById("input2").value;
+        const convertedInput2 = parseInt(input_2);
+        console.log(convertedInput2);
 
-function removeActiveClass(){
+        if(input_2 === "" && input_1 === ""){
+            alert("Please tell us your name first");
+        } 
+        else if (convertedInput2 === 123456 && input_1 === "Elon") {
+            document.getElementById("nav-container").classList.remove("hidden");
+            document.getElementById("hero-section").classList.add("hidden");
+            document.getElementById("footer-container").classList.remove("hidden");
+            document.getElementById("card-container-id").classList.remove("hidden");
+            document.getElementById("learn-section").classList.remove("hidden");
+            document.getElementById("login_popup").showModal();
+        }
+        else {
+            alert("The Account name or the Passord is wrong");
+        }
+    })
+
+function removeActiveClass() {
     const activeBtn = document.getElementsByClassName("active");
-    for(let btn of activeBtn){
+    for (let btn of activeBtn) {
         btn.classList.remove("active");
     }
 }
@@ -85,24 +89,33 @@ function removeActiveClass(){
 
 // load funcitons
 
-function loadButtons(){
+function loadButtons() {
     fetch('https://openapi.programming-hero.com/api/levels/all')
-    .then(response=> response.json())
-    .then(data => displayButtons(data.data));
+        .then(response => response.json())
+        .then(data => displayButtons(data.data));
 }
 
-function loadWords(level_no, btn_id){
+function loadWords(level_no, btn_id) {
     fetch(`https://openapi.programming-hero.com/api/level/${level_no}`)
-    .then(res => res.json())
-    .then(data=> {
-        removeActiveClass();
-        const btnClicked = document.getElementById(`btn-${btn_id}`);
-        btnClicked.classList.add("active");
-        const iconCicked = 
-        // console.log(btnClicked);
-        displayWords(data.data)
-    });
+        .then(res => res.json())
+        .then(data => {
+            removeActiveClass();
+            const btnClicked = document.getElementById(`btn-${btn_id}`);
+            btnClicked.classList.add("active");
+            // const iconCicked =
+                // console.log(btnClicked);
+            displayWords(data.data);
+        });
 }
+
+
+function loadWordDetails(id) {
+    fetch(`https://openapi.programming-hero.com/api/word/${id}`)
+        .then(response => response.json())
+        .then(data => displayWordDetails(data.data));
+
+}
+
 
 // {
 //     "status": true,
@@ -471,25 +484,25 @@ function loadWords(level_no, btn_id){
 
 // display funcitons
 
-function displayButtons(buttons){
+function displayButtons(buttons) {
     const btnContainer = document.getElementById("btn-container");
-    for(let button of buttons){
+    for (let button of buttons) {
         // console.log("level_no",button.level_no);
         // console.log("buttonid",button.id);
-        
+
 
         const divBtn = document.createElement("div");
 
         divBtn.innerHTML = `
-        <button id= "btn-${button.id}" onclick="loadWords(${button.level_no}, ${button.id})" class="btn btn-outline btn-primary btn-hover border-[#422AD5]"><svg id="icon-${button.id}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        <button id= "btn-${button.id}" onclick="loadWords(${button.level_no}, ${button.id})" class="btn btn-outline btn-primary btn-hover border-[#422AD5]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="size-6  icon ">
             <path stroke-linecap="round" stroke-linejoin="round"
                 d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
         </svg><span class = "btn-text">Lesson - ${button.level_no}</span></button>
         `;
-        
+
         btnContainer.appendChild(divBtn);
-        
+
 
     }
 }
@@ -499,13 +512,13 @@ function displayButtons(buttons){
 
 
 
-function displayWords(arrayOfObj){
+function displayWords(arrayOfObj) {
     const cardContainer = document.getElementById("card-container");
 
     cardContainer.innerHTML = "";
 
-    if(arrayOfObj.length === 0){
-        
+    if (arrayOfObj.length === 0) {
+
 
         cardContainer.innerHTML = `
         <div class="mx-32 flex flex-col justify-center items-center mt-10 col-span-full">
@@ -521,7 +534,7 @@ function displayWords(arrayOfObj){
         return;
     }
 
-    for(let lvl of arrayOfObj){
+    for (let lvl of arrayOfObj) {
         // console.log(lvl.word);
 
         const divCard = document.createElement("div");
@@ -530,13 +543,13 @@ function displayWords(arrayOfObj){
 
         divCard.innerHTML = `
         
-        <div class="card bg-base-100 shadow-lg mb-16">
+        <div class="card bg-base-100 h-60 shadow-lg mb-16">
             <div class="card-body items-center">
                 <h2 class="card-title font-bold text-3xl inter">${lvl.word}</h2>
-                <p class="font-bold text-sm inter">Meaning/Pronouciation</p>
-                <h2 class="font-bold text-3xl">${lvl.meaning}</h2>
+                <p class="font-bold text-sm inter">Meaning / Pronouciation</p>
+                <h2 class="font-bold text-3xl text-center">${lvl.meaning === null ? "অর্থ নেই" : lvl.meaning} / ${lvl.pronunciation}</h2>
                 <div class="flex justify-between w-full">
-                    <button class="btn">
+                    <button onclick = "loadWordDetails('${lvl.id}')" class="btn">
                         <img class="w-5 h-5"
                             src="https://img.icons8.com/?size=100&id=yZ5EVwBq6KA6&format=png&color=000000" alt="">
                     </button>
@@ -546,11 +559,53 @@ function displayWords(arrayOfObj){
                     </button>
                 </div>
             </div>
-        
+        </div>
         `;
         cardContainer.appendChild(divCard);
     }
 
+}
+
+// {
+//     "word": "Eager",
+//         "meaning": "আগ্রহী",
+//             "pronunciation": "ইগার",
+//                 "level": 1,
+//                     "sentence": "The kids were eager to open their gifts.",
+//                         "points": 1,
+//                             "partsOfSpeech": "adjective",
+//                                 "synonyms": [
+//                                     "enthusiastic",
+//                                     "excited",
+//                                     "keen"
+//                                 ],
+//                                     "id": 5
+// }
+
+function displayWordDetails(object) {
+    console.log(object);
+    document.getElementById("word_details").showModal();
+
+    const wordDetailsContainer = document.getElementById("word-details-container");
+    wordDetailsContainer.innerHTML = "";
+    const dynamicDiv = document.createElement("div");
+    dynamicDiv.innerHTML = `
+    <h3 class = "text-2xl font-bold flex">${object.word} (<svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+</svg>: <span> ${object.pronunciation}</span>)</h3>
+    <br>
+    <h4 class = "text-xl">Meaning</h4>
+    <h4 class = "text-xl font-bold">${object.meaning === null ? "অর্থ পাওয়া যায়নি" : object.meaning}</h4>
+    <br>
+    <h4 class = "text-xl font-bold">Example</h4>
+    <h4 class = "text-xl">${object.sentence}</h4>
+    <br>
+    <h4 class = "text-xl font-bold">সমার্থক শব্দ গুলো</h4>
+    <h4 class = "text-xl">${object.synonyms.map(item => `<button class="btn">${item !== "" ? item.charAt(0).toUpperCase() + item.slice(1): ""}</button>`).join(' ')}</h4>
+    
+    `;
+    // console.log(object.synonyms)
+    wordDetailsContainer.appendChild(dynamicDiv);
 }
 
 
